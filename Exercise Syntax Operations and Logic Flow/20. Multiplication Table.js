@@ -1,13 +1,24 @@
-function multiplicationTable(n){
-let html = '<table border="1">\n';
+function multiplicationTable(n) {
+    let html = '<table border="1">\n';
 
     for (let row = 0; row <= n; row++) {
+            html += '<tr>';
         for (let col = 0; col <= n; col++) {
-            html += '\n';
-           if (row === 0 && col === 0) {
-               html += '<tr><th>x</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>\n';
-           }
+
+            if (row === 0) {
+                html += `<th>${col === 0 ? 'x' : col}</th>`;
+                continue;
+            }
+
+            html += col === 0 ? `<th>${row}</th>` : `<td>${col * row}</td>`;
         }
+
+        html += '</tr>\n';
     }
 
+    html += '</table>';
+
+    console.log(html);
 }
+
+multiplicationTable(5);
